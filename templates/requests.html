@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <style>
+            #container{
+                margin:70px;
+                box-shadow: 8px 8px 8px 8px rgba(0,0,0,0.2);
+                width: 90%;
+                height: auto;
+                perspective: 1000px;
+                background:linear-gradient(white,rgb(132, 233, 208))      
+            }
+            #tit{
+                text-align:center;
+            }
+            #card{
+                margin: 30px;
+                box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.2);
+                width: auto;
+                height: auto;
+                perspective: 1000px;
+                background-color:lavenderblush;
+                
+            }
+
+            html,
+        body {
+            height: 100%;
+            background-color: #152733;
+            overflow: hidden;
+            background:linear-gradient(white,rgb(132, 233, 208))      }
+        
+        </style>
+            
+    </head>
+    <body>
+        <div id="container" >
+            <h3 id="tit">
+                Confirmed Riders
+            </h3>
+            {% for i in data %}
+            <div id="card">
+                <table style="height:100px;width:300px;">
+                    <tr>
+                        <th>
+                            Rider Email: 
+                        </th>
+                        <td>
+                            i['rider']
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            His Bid : 
+                        </th>
+                        <td>
+                            i['bid']
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>

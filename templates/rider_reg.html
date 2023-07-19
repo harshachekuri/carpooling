@@ -1,0 +1,306 @@
+<html>
+
+    <head>
+        <title>passenger login</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    
+    
+        <style>
+            #header {
+      height: 70px;
+      transition: all 0.5s;
+      z-index: 997;
+      color:white;
+      background: linear-gradient(45deg, #1de099, #1dc8cd);
+    }
+    
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
+    
+            *,
+            body {
+                font-family: 'Poppins', sans-serif;
+                font-weight: 400;
+                -webkit-font-smoothing: antialiased;
+                text-rendering: optimizeLegibility;
+                -moz-osx-font-smoothing: grayscale;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+    
+            }
+    
+            html,
+            body {
+                height: 100%;
+                background-color: #152733;
+                overflow: hidden;
+                background:linear-gradient(white,rgb(132, 233, 208))      }
+    
+    
+            .form-holder {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                min-height: 100vh;
+            }
+    
+            .form-holder .form-content {
+                position: relative;
+                text-align: center;
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-justify-content: center;
+                justify-content: center;
+                -webkit-align-items: center;
+                align-items: center;
+                padding: 60px;
+            }
+    
+            .form-content .form-items {
+                border-left: 2px solid gray;
+                border-top: 2px solid gray;
+                box-shadow: 1px 2px 9px 4px rgba(20,20,20,0.4);
+    
+                padding: 40px;
+                display: inline-block;
+                width: 100%;
+                min-width: 540px;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 10px;
+                border-radius: 10px;
+                text-align: left;
+                -webkit-transition: all 0.4s ease;
+                transition: all 0.4s ease;
+                margin-left: 70px;
+                margin-right: -30px;
+                margin-top:-50px ;
+            }
+    
+            .form-content h3 {
+                color: black;
+                text-align: left;
+                font-size: 28px;
+                font-weight: 600;
+                margin-bottom: 5px;
+            }
+    
+            .form-content h3.form-title {
+                margin-bottom: 30px;
+            }
+    
+            .form-content p {
+                color: black;
+                text-align: left;
+                font-size: 17px;
+                font-weight: 300;
+                line-height: 20px;
+                margin-bottom: 30px;
+            }
+    
+            .imgrig {
+                float: right;
+                margin-left: 200px;
+            }
+    
+    
+            .form-content label,
+            .was-validated .form-check-input:invalid~.form-check-label,
+            .was-validated .form-check-input:valid~.form-check-label {
+                color: black;
+            }
+    
+            .form-content input[type=text],
+            .form-content input[type=password],
+            .form-content input[type=number],
+            .form-content input[type=email],
+            .form-content select {
+                width: 100%;
+                padding: 9px 20px;
+                text-align: left;
+                border: 0;
+                outline: 0;
+                border-radius: 6px;
+                background-color: #fff;
+                border:1px  solid gray;
+                font-size: 15px;
+                font-weight: 300;
+                color: #8D8D8D;
+                -webkit-transition: all 0.3s ease;
+                transition: all 0.3s ease;
+                margin-top: 16px;
+            }
+    
+    
+         
+    
+            .btn-primary:hover,
+            .btn-primary:focus,
+            .btn-primary:active {
+                background:#1dc8cd;
+                outline: none !important;
+                border: none !important;
+                box-shadow: 0px 0px 2px rgb(182, 181, 181);
+            }
+    
+            .btn{
+                background: #1de099;
+            }
+    
+            .btn:hover{
+                background: #1dc8cd;
+            }
+    
+            .form-content textarea {
+                position: static !important;
+                width: 100%;
+                padding: 8px 20px;
+                border-radius: 6px;
+                text-align: left;
+                background-color: #fff;
+                border: 0;
+                font-size: 15px;
+                font-weight: 300;
+                color: #8D8D8D;
+                outline: none;
+                resize: none;
+                height: 120px;
+                -webkit-transition: none;
+                transition: none;
+                margin-bottom: 14px;
+            }
+    
+            .form-content textarea:hover,
+            .form-content textarea:focus {
+                border: 0;
+                background-color: #ebeff8;
+                color: #8D8D8D;
+            }
+    
+            .mv-up {
+                margin-top: -9px !important;
+                margin-bottom: 8px !important;
+            }
+    
+            .invalid-feedback {
+                color: #ff606e;
+            }
+    
+            .valid-feedback {
+                color: #2acc80;
+            }
+    
+            .container {
+                height: 200px;
+                position: relative;
+                border: 3px solid green;
+            }
+    
+            .vertical-center {
+                margin: 0;
+                position: absolute;
+                top: 50%;
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+            }
+    
+            .p1 {
+                font-size: x-large;
+                margin-left:46.5%; 
+                margin-top: 15px;
+            }
+    
+          
+            #submit{
+                width: 93%;
+            }
+            u{
+                text-decoration-color:#1dc8cd;
+            }
+            #ref{
+                width:fit-content;
+                margin-left: 550px;
+                margin-top: 2px;
+            }
+        </style>
+    
+    </head>
+    
+    <body>
+       <div class="nav" id="header">
+        <p class="p1">ride<b>N</b>share<a href="/"><button id="ref" type="submit" class="btn">Go To Home</button></a></p>
+       </div>
+        <div class="form-body">
+            <div class="row">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items card">
+                            <h3>Rider Registration</h3>
+
+                           <p>Fill in the data For Giving ride</p>
+                          <form class="requires-validation" validate action="/rider_reg_verify" method="post">
+
+                            <div class="col-md-12">
+                                <div class="col-md-12">
+                                    <input class="form-control" type="text" name="name" placeholder="Full Name"
+                                        required>
+
+                                </div>
+                                <div class="col-md-12">
+                                    <input class="form-control" type="email" name="email" placeholder="E-mail Address"
+                                        required>
+                                </div>
+                                <div class="col-md-12">
+                                    <input class="form-control" type="number" name="age" placeholder="Age" required>
+                                </div>
+
+                                <div class="col-md-12 mt-3">
+                                    <input class="form-control" type="text" name="sex" placeholder="enter your sex"
+                                        required>
+                                </div>
+                                <div class="col-md-12">
+                                    <input class="form-control" type="text" name="vname"
+                                        placeholder="Enter your Vehicle Name" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <input class="form-control" type="text" name="vno"
+                                        placeholder="Enter your Vehicle No" required>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <input class="form-control" type="password" name="password"
+                                        placeholder="enter your password" required>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <label class="form-check-label">I confirm that all data are correct</label>
+                                </div>
+                                <div class=" col-md-12">
+                                    <p style="color: red;">
+                                        {{res}}
+                                    </p>
+                                </div>
+                                <div class="text-center">
+                                    <button id="submit" type="submit" class="btn btn-success ">Register</button>
+                                </div><br />
+                                <p>Already Registerd Click Here <a href="/loginr" target="">For Login</a></p>
+                            </div>
+                         </form>
+                        </div>
+                        <div class="imgrig">
+                            <img src="{{ url_for('static',filename='pic.png')}}"
+                                alt="copyright">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    
+    </body>
+    
+    </html>

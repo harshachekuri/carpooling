@@ -1,0 +1,392 @@
+<html>
+
+<head>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <style>
+        html,
+        body {
+            background: none;
+            scroll-behavior: auto;
+            background-color: whitesmoke;
+        }
+
+        #menu {
+            text-align: center;
+            float: right;
+            width: 40%;
+            height: 70px;
+            line-height: 70px;
+        }
+
+        #container {
+            height: 500px;
+            transition: all 0.5s;
+            color: white;
+            width: 100%;
+            margin-right: -100px;
+            background: linear-gradient(45deg, rgba(29, 224, 153, 0.8), rgba(29, 200, 205, 0.8)),url("{{url_for('static',filename='car.jpg')}}") center top no-repeat;
+            position: relative;
+        }
+
+        #header {
+            text-align: center;
+            float: left;
+            width: 100% !important;
+            position: relative;
+            font-size: 25px;
+        }
+
+        #body {
+            float: left;
+            width: 100%;
+        }
+
+        #title {
+            text-align: center;
+            margin-top: 10px;
+            float: left;
+            width: 40%;
+            height: 70px;
+        }
+
+        #c {
+            background-image: linear-gradient(white);
+        }
+
+        #cod {
+            box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
+            width: auto;
+            height:180px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 20px;
+        }
+        .nlp{
+            border-radius: 20px;
+            background-color: aliceblue;
+            padding:30px;
+        }
+
+        #btn1:hover {
+            box-shadow: 0px 0px 2px grey;
+            background: aliceblue;
+            text-decoration: none;
+            color: black
+        }
+        .btn {
+            color: white;
+        }
+
+        u{
+            text-decoration-color: rgb(27, 229, 236);
+        }
+
+        #a {
+            background-image: linear-gradient(white, rgb(132, 233, 208));
+        }
+
+        #ch {
+            background-color: rgb(240, 247, 244);
+        }
+
+        .footer {
+            background: rgba(29, 224, 153, 0.8);
+            float: left;
+            width: 100%;
+            height: 25px;
+            color: white;
+        }
+
+        .b {
+            width: 100%;
+            height: 100%;
+            opacity: 1;
+            top: 0;
+            left: 0;
+            display: none;
+            position: fixed;
+            background-color: #6b6868;
+            overflow: auto;
+            padding: 100px;
+        }
+
+        #n {
+            bottom: 0;
+            top: -20px;
+            height:42px;
+            width: 100%;
+            margin-top: -20px;
+            border-top-right-radius: 20px;
+            border-top-left-radius: 20px;
+            font-size: 15px;
+            background: linear-gradient(45deg, rgba(29, 224, 153, 0.8), rgba(29, 200, 205, 0.8));
+        }
+
+        #l,
+        #p {
+            width: 100%;
+            margin-left: -25px;
+            margin-right: -25px;
+            left:0;
+            right:0;
+        }
+        .btn {
+            color: white;
+            text-decoration-color: white
+        }
+        .btn1:hover {
+            box-shadow: 0px 0px 2px grey;
+            background: rgb(119, 104, 252);
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="title">
+            <h1>Ride N Share </h1>
+        </div>
+        <div id="menu">
+            <a href="/offerride">
+                <DIV class="btn" id="btn1">
+                    Give a Ride
+                </DIV>
+            </a>
+            <a href="/logout_driver">
+                <div class="btn" id="btn2">
+                    Logout
+                </div>
+            </a>
+        </div>
+        <div id="header">
+            <h1><u>
+                    Giving a Ride</u>
+            </h1>
+            <pre>
+
+Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+Vitae distinctio asperiores nobis,minus laboriosam, voluptatem
+optio reiciendis quia iure sapiente corrupti quod atque magni explicabo
+neque aspernatur beatae quos, quis assumenda quisquam ducimus?
+Temporibus quis laborum cumque assumenda, eum accusamus quas, 
+iure voluptate impedit ipsum alias laudantium reiciendis similique aspernatur!
+            </pre>
+        </div>
+    </div>
+    <div class="container" style="width:100%">
+        <br>
+        <hr>
+        <br>
+        <div class="row" id="body">
+            <div class="col-12">
+                {% if not data %}
+                <h2 class="text-center">
+                    <u>
+                        Registered Rides
+                    </u>
+                </h2>
+                <div class="text-center h4">
+                    No rides are offered for now
+                </div>
+                {% endif %}
+                {% if data %}
+                <div class="card m-5 p-4" id="a">
+                    <h2 class="text-center">
+                        <u>
+                            Registered Rides
+                        </u>
+                    </h2>
+                    <div class="card-body h5">
+                        {% for i in data %}
+                        {% set x=i['_id'] %}
+                        <div class="card m-3 p-3">
+                            <div class="card-body" id="c">
+                                <p>
+                                    <b> {{i['source']}} </b>
+                                    to
+                                    <b>
+                                        {{i['destination']}}
+                                    </b>
+                                </p><br>
+                                <p>
+                                    at {{i['date']}} {{i['time']}}'O clock
+                                </p>
+                                <p>
+                                    Number of seats available : <b>{{i['seats']}} </b>
+                                </p>
+                            </div>
+                            <div id="ch">
+                                <div class="btn btn-success" onclick="show('{{x}}')" id="popup">
+                                    <h5>
+                                        Requests
+                                    </h5>
+                                </div>
+                                <div class="text-end" style="width:20%;float:right;">
+                                    <a href="/cancel?id={{i['_id']}}" class="text-end">
+                                        <div class="btn btn-danger">
+                                            <h5>
+                                                Cancel
+                                            </h5>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div id="{{x}}" class='b' style="display: none;">
+                                    <div class="nlp">
+                                        <div id="n">
+                                            <p class="btn btn1 tablink"
+                                                onclick="openCity(event,'London{{x}}')">Passengers</p>
+                                            <p class="btn btn1 tablink"
+                                                onclick="openCity(event,'Paris{{x}}')">Requests</p>
+                                            <div class="text-end m-1 btn" style="width:10%;float:right;" onclick="hide('{{x}}')"><b>X</b>
+                                            </div>
+                                        </div>
+                                        <div id="London{{x}}" class="city active" id="l">
+                                            {% if i['passengers']==[] %}
+                                            <div class="alert alert-danger text-center m-3">
+                                                No Passengers
+                                            </div>
+                                            {% endif %}
+                                            {% if i['passengers']!= [] %}
+                                            {% for j in i['passengers'] %}
+                                            <div id="cod">
+                                                <table style="height:100px;width:700px;">
+                                                    <tr>
+                                                        <th>
+                                                            Rider Email:
+                                                        </th>
+                                                        <td>
+                                                            {{j['rider']}}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>
+                                                            His Bid :
+                                                        </th>
+                                                        <td>
+                                                            {{j['bid']}}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>
+                                                            His pickup point :
+                                                        </th>
+                                                        <td>
+                                                            {{j['pick']}}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>
+                                                            His drop point :
+                                                        </th>
+                                                        <td>
+                                                            {{j['drop']}}
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            {% endfor %}
+                                            {% endif %}
+
+                                        </div>
+                                        <div id="Paris{{x}}" class="city" style="display:none" id="p">
+                                            {% if i['requests']==[] %}
+                                            <div class="alert alert-danger text-center m-3">
+                                                No Requests
+                                            </div>
+                                            {% endif %}
+                                            {% if i['requests']!= [] %}
+                                            {% for j in i['requests'] %}
+                                            <div id="cod">
+                                                <table style="height:100px;width:700px;">
+                                                    <tr>
+                                                        <th>
+                                                            Rider Email:
+                                                        </th>
+                                                        <td>
+                                                            {{j['rider']}}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>
+                                                            His Bid :
+                                                        </th>
+                                                        <td>
+                                                            {{j['bid']}}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>
+                                                            His pickup point :
+                                                        </th>
+                                                        <td>
+                                                            {{j['pick']}}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>
+                                                            His drop point :
+                                                        </th>
+                                                        <td>
+                                                            {{j['drop']}}
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <div style="width:50%;float:left">
+                                                    <a href="/acc?id={{i['_id']}}&rid={{j['rider']}}">
+                                                        <div class="btn btn-success">Accept</div>
+                                                    </a>
+                                                </div>
+                                                <div class="text-end" style="width:50%;float:right">
+                                                    <a href="/can2?id={{i['_id']}}&rid={{j['rider']}}">
+                                                        <div class="btn btn-danger">Deny</div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <br>
+                    <br>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+    <script>
+        function openCity(evt, cityName) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("city");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" w3-green", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " w3-green";
+        }
+        function show(x) {
+            document.getElementById(x).style.display = 'block'
+        }
+        function hide(x) {
+            document.getElementById(x).style.display = 'none'
+        }
+    </script>
+    <div class="footer text-center">
+        End of Page
+    </div>
+</body>
+
+</html>

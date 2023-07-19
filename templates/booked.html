@@ -1,0 +1,164 @@
+<html>
+
+<head>
+  <style>
+    html,
+    body {
+      scroll-behavior: auto
+    }
+
+
+    #menu {
+            text-align: center;
+            float: right;
+            width: 40%;
+            height: 70px;
+            line-height: 70px;
+        }
+    #btn1:hover {
+            box-shadow: 0px 0px 2px grey;
+            background: rgb(119, 104, 252);
+            text-decoration: none;
+            color: white;
+        }
+
+        #btn2:hover {
+            box-shadow: 0px 0px 2px grey;
+            background: rgb(243, 30, 2);
+            text-decoration: none;
+            color: white;
+        }
+
+        #btn1{
+            color: #fff;
+            background-color:black ;
+        }
+        #btn2{
+            color:#fff;
+            background-color: black;
+        }
+        #pk{
+                
+              background: linear-gradient(white,rgba(29, 224, 153, 0.8));
+
+            }
+          
+        #ak
+        {
+          background: white;
+          margin: 2px;
+          width: 60%;
+          margin-left: 100px;
+          margin-right: -1000px;
+        }
+
+        #container {
+            height: 70px;
+            transition: all 0.5s;
+            color: white;
+            width: 100%;
+            background: linear-gradient(45deg, rgba(29, 224, 153, 0.8), rgba(29, 200, 205, 0.8)), url("{{url_for('static',filename='car.jpg')}}") center top no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+    #title {
+      text-align: center;
+      margin-top: 10px;
+      float: left;
+      width: 40%;
+      height: 70px;
+    }
+   
+  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
+</head>
+
+<body>
+  <div class="row">
+    <div id="container">
+      <div id="title">
+        <h1>Ride N Share </h1>
+      </div>
+     <div id="menu">
+        <a class="butt" href="/backphome">
+            <div class="btn" id="btn1" >
+               Home
+            </div>
+        </a>
+        <a class="butt" href="/logout_pass">
+            <div class="btn" id="btn2">
+                Logout
+            </div>
+        </a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="container scroll">
+    
+      <div class="card-body" id="pk">
+        <div class="row-2">
+          <div class="col-12 m-2 p-2">
+            <h3>Booked Rides</h3>
+            {% if data2==[] %}
+            <div class="alert alert-danger m-1">
+              No Rides are Booked
+            </div>
+            {% endif %}
+            {% for i in data2 %}
+            <div class="card m-2 p-2">
+              <div class="card-body text-center" id="ak">
+                <p>
+                  <b> Driver email : </b>
+                  <i> {{i['driver']}} </i>
+                </p>
+                <p>
+                  <b> {{i['source']}} </b>
+                  to
+                  <b> {{i['destination']}} </b>
+                </p>
+                <br />
+                <p>at {{i['date']}} {{i['time']}}'O clock</p>
+              </div>
+            </div>
+            {% endfor %}
+            <br>
+            <hr>
+            <br>
+            <h3>Requested Rides</h3>
+            {% if data1==[] %}
+            <div class="alert alert-danger m-1">
+              No Requests
+            </div>
+            {% endif %}
+            {% for i in data1 %}
+            <div class="card m-2 p-2">
+              <div class="card-body text-center" id="ak">
+                <p>
+                  <b> Driver email : </b>
+                  <i> {{i['driver']}} </i>
+                </p>
+                <p>
+                  <b> {{i['source']}} </b>
+                  to
+                  <b> {{i['destination']}} </b>
+                </p>
+                <br />
+                <p>at {{i['date']}} {{i['time']}}'O clock</p>
+              </div>
+              <div class="card-footer text-end">
+                <a href="/can1?id={{i['_id']}}">
+                  <div class="btn btn-danger">Cancel</div>
+                </a>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</body>
+
+</html>
